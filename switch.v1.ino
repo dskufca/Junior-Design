@@ -1,3 +1,5 @@
+// CODE BY ANTHONY AND DANIELLE
+
 const int run_led = 9;           // the PWM pin the LED is attached to
 const int sleep_led  = 10;
 const int on_switch = 52;
