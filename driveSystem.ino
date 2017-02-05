@@ -1,16 +1,16 @@
-int forward_1 = 2; // right wheel
-int backward_1 = 3;
-int forward_2 = 5; // left wheel
-int backward_2 = 6;
+int forward_R = 2; // right wheel
+int backward_R = 3;
+int forward_L = 5; // left wheel
+int backward_L = 6;
 
 int drive_mode = 0;
 int previous_mode;
 
 int maxSpeed = 50;
-int currSpeed_1f = 0;
-int currSpeed_1b = 0;
-int currSpeed_2f = 0;
-int currSpeed_2b = 0;
+int currSpeed_Rf = 0;
+int currSpeed_Rb = 0;
+int currSpeed_Lf = 0;
+int currSpeed_Lb = 0;
 
 unsigned long previousMillis = 0;
 unsigned long currentMillis;
@@ -19,10 +19,10 @@ unsigned long currentMillis;
 // the setup routine runs once when you press reset:
 void setup() {
   // declare pin 9 to be an output:
-  pinMode(forward_1, OUTPUT);
-  pinMode(backward_1, OUTPUT);
-  pinMode(forward_2,OUTPUT);
-  pinMode(backward_2,OUTPUT);
+  pinMode(forward_R, OUTPUT);
+  pinMode(backward_R, OUTPUT);
+  pinMode(forward_L,OUTPUT);
+  pinMode(backward_L,OUTPUT);
 }
 
 // the loop routine runs over and over again forever:
@@ -35,29 +35,29 @@ void loop() {
             case 0:
             {
                 // initialize off
-                currSpeed_1f = 0;
-                currSpeed_1b = 0;
-                currSpeed_2f = 0;
-                currSpeed_2b = 0;
+                currSpeed_Rf = 0;
+                currSpeed_Rb = 0;
+                currSpeed_Lf = 0;
+                currSpeed_Lb = 0;
                 break;
             }
             case 1:
             {
                 // initialize forward
-                currSpeed_1b = 0;
-                currSpeed_2b = 0;
-                analogWrite(backward_1,currSpeed_1b);
-                analogWrite(backward_2,currSpeed_2b);
+                currSpeed_Rb = 0;
+                currSpeed_Lb = 0;
+                analogWrite(backward_R,currSpeed_Rb);
+                analogWrite(backward_L,currSpeed_Lb);
 
                 break;
             }
             case 2:
             {
                 // initialize backward
-                currSpeed_1f = 0;
-                currSpeed_2f = 0;
-                analogWrite(forward_1, currSpeed_1f);
-                analogWrite(forward_2, currSpeed_2f;
+                currSpeed_Rf = 0;
+                currSpeed_Lf = 0;
+                analogWrite(forward_R, currSpeed_Rf);
+                analogWrite(forward_L, currSpeed_Lf;
               
                 break;
             }
@@ -91,16 +91,16 @@ void loop() {
             // accelerate forward
             currentMillis = millis();
             if (currentMillis-previousMillis > 10) {
-                if (currSpeed_1f < maxSpeed) {
-                    currSpeed_1f = currSpeed_1f + 1;
+                if (currSpeed_Rf < maxSpeed) {
+                    currSpeed_Rf = currSpeed_Rf + 1;
                 }
-                if (currSpeed_2f < maxSpeed) {
-                    currSpeed_2f = currSpeed_2f + 1;
+                if (currSpeed_Lf < maxSpeed) {
+                    currSpeed_Lf = currSpeed_Lf + 1;
                 }
                 previousMillis = millis();
 
-                analogWrite(forward_1,currSpeed_1f);
-                analogWrite(forward_2,currSpeed_2f);
+                analogWrite(forward_R,currSpeed_Rf);
+                analogWrite(forward_L,currSpeed_Lf);
             }
             break;
         }
