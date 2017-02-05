@@ -43,57 +43,15 @@ void loop() {
 
     // adjust if in new state
     if (drive_mode != previous_mode) {
-        switch (drive_mode) {
-            case 0:
-            {
-                // initialize off
-                currSpeed_Rf = 0;
-                currSpeed_Rb = 0;
-                currSpeed_Lf = 0;
-                currSpeed_Lb = 0;
-                break;
-            }
-            case 1:
-            {
-                // initialize forward
-                currSpeed_Rb = 0;
-                currSpeed_Lb = 0;
-                analogWrite(backward_R,currSpeed_Rb);
-                analogWrite(backward_L,currSpeed_Lb);
-
-                break;
-            }
-            case 2:
-            {
-                // initialize backward - turn off wheels moving forward
-                currSpeed_Rf = 0;
-                currSpeed_Lf = 0;
-                analogWrite(forward_R, currSpeed_Rf);
-                analogWrite(forward_L, currSpeed_Lf;
-              
-                break;
-            }
-            case 3:
-            {
-                // initialize right
-                
-                currSpeed_Rf = 0;
-                currSpeed_Lb = 0;
-                analogWrite(forward_L, currSpeed_Rf)
-                analogWrite(backward_R, currSpeed_Lb)
-                
-                break;
-            }
-            case 4:
-            {
-                // initialize left
-                currSpeed_Lf = 0;
-                currSpeed_Rb = 0;
-                analogWrite(forward_L,currSpeed_Lf);
-                analogWrite(backward_R,currSpeed_Rb);
-                break;
-            }
-        }
+        // reset everything
+        currSpeed_Rf = 0;
+        currSpeed_Rb = 0;
+        currSpeed_Lf = 0;
+        currSpeed_Lb = 0;
+        analogWrite(forward_R,currSpeed_Rf);
+        analogWrite(forward_L,currSpeed_Lf);
+        analogWrite(backward_R,currSpeed_Rb);
+        analogWrite(backward_L,currSpeed_Lb);
     }
     
     // create a switch statement for the drive controls
