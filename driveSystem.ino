@@ -28,6 +28,18 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() {
     // choose state of drive system
+    currentMillis = millis();
+    if (currentMillis > 5000) {
+        drive_mode = 0;
+    } else if (currentMillis > 3500) {
+        drive_mode = 2;
+    } else if (currentMillis > 2500) {
+        drive_mode = 3;
+    } else if (currentMillis > 1500) {
+        drive_mode = 4;
+    } else {
+        drive_mode = 1;
+    }
 
     // adjust if in new state
     if (drive_mode != previous_mode) {
@@ -71,7 +83,10 @@ void loop() {
             case 4:
             {
                 // initialize left
-
+                currSpeed_Lf = 0;
+                currSpeed_Rb = 0;
+                analogWrite(forward_L,currSpeed_Lf);
+                analogWrite(backward_R,currSpeed_Rb);
                 break;
             }
         }
@@ -119,7 +134,11 @@ void loop() {
         case 4:
         {
             // LEFT
-
+            // maybe accelerate here? right now constant
+            currSpeed_Rf = maxSpeed;
+            currSpeed_Lf = maxSpeed;
+            analogWrite(forward_R,currSpeed_Rf);
+            analogWrite(backward_L,currSpeed_Lb);
             break;
         }
     }
