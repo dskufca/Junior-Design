@@ -1,6 +1,6 @@
-int forward_1 = 2;
+int forward_1 = 2; // right wheel
 int backward_1 = 3;
-int forward_2 = 5;
+int forward_2 = 5; // left wheel
 int backward_2 = 6;
 
 int drive_mode = 0;
@@ -35,7 +35,10 @@ void loop() {
             case 0:
             {
                 // initialize off
-                
+                currSpeed_1f = 0;
+                currSpeed_1b = 0;
+                currSpeed_2f = 0;
+                currSpeed_2b = 0;
                 break;
             }
             case 1:
