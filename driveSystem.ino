@@ -27,7 +27,7 @@ void setup() {
 
 // the loop routine runs over and over again forever:
 void loop() {
-    // chose state of drive system
+    // choose state of drive system
 
     // adjust if in new state
     if (drive_mode != previous_mode) {
@@ -51,13 +51,18 @@ void loop() {
             case 2:
             {
                 // initialize backward
-
+                currSpeed_1f = 0;
+                currSpeed_2f = 0;
+                analogWrite(forward_1, currSpeed_1f);
+                analogWrite(forward_2, currSpeed_2f;
+              
                 break;
             }
             case 3:
             {
                 // initialize right
-
+                
+              
                 break;
             }
             case 4:
