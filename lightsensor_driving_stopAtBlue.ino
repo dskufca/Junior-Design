@@ -18,7 +18,7 @@ int surfaceColor;
 
 // threshold vars
 int redThresh = 75;
-int bbThresh = 55;
+int bbThresh = 20;
 int ryThresh = 145;
 
 // vars for motor speeds
